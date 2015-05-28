@@ -1,0 +1,29 @@
+﻿Build started 3/30/2015 1:27:11 PM.
+     1>Project "C:\Users\lol002\Desktop\CSE167-Spring-2015-Starter-Code-master\CSE167-Spring-2015-Starter-Code-master\Cube.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ic:\libs\glut /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Matrix4.cpp
+         Matrix4.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\Cube.exe" /INCREMENTAL /NOLOGO /LIBPATH:c:\libs\glut kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\Cube.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\Cube.lib" /MACHINE:X86 /SAFESEH Debug\main.obj
+         Debug\Camera.obj
+         Debug\Color.obj
+         Debug\Cube.obj
+         Debug\Light.obj
+         Debug\Material.obj
+         Debug\Matrix4.obj
+         Debug\Drawable.obj
+         Debug\DrawData.obj
+         Debug\Sphere.obj
+         Debug\Texture.obj
+         Debug\UpdateData.obj
+         Debug\Vector3.obj
+         Debug\Vector4.obj
+         Debug\Window.obj
+         Debug\Globals.obj
+         Debug\MathTestBench.obj
+         Cube.vcxproj -> C:\Users\lol002\Desktop\CSE167-Spring-2015-Starter-Code-master\CSE167-Spring-2015-Starter-Code-master\Debug\Cube.exe
+     1>Done Building Project "C:\Users\lol002\Desktop\CSE167-Spring-2015-Starter-Code-master\CSE167-Spring-2015-Starter-Code-master\Cube.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.91
