@@ -9,7 +9,7 @@
 #include "Window.h"
 
 Sphere::Sphere(){
-    
+  
 }
 
 Sphere::~Sphere(){
@@ -35,5 +35,6 @@ void Sphere::render(Matrix4 C)
     
     glPopMatrix();
 }
+
 
 

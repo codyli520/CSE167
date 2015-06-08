@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		C30D284B1ADDADCF0003DB34 /* Rasterizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C30D284A1ADDADCF0003DB34 /* Rasterizer.cpp */; };
+		C37EBF771B23B43C00AE80AB /* Obstacles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37EBF751B23B43C00AE80AB /* Obstacles.cpp */; };
+		C37EBF7A1B23D78800AE80AB /* ParticleEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37EBF781B23D78800AE80AB /* ParticleEffect.cpp */; };
+		C37EBF7D1B23DA2C00AE80AB /* Sphere2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37EBF7B1B23DA2C00AE80AB /* Sphere2.cpp */; };
+		C37FBEBE1B1EA1DF005C0F9D /* Buildings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37FBEBC1B1EA1DF005C0F9D /* Buildings.cpp */; };
+		C37FBEC11B1EA91E005C0F9D /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37FBEBF1B1EA91E005C0F9D /* Block.cpp */; };
+		C37FBEC41B1EB692005C0F9D /* L_System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C37FBEC21B1EB692005C0F9D /* L_System.cpp */; };
+		C37FBECB1B216C8A005C0F9D /* front.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C37FBEC51B216C8A005C0F9D /* front.ppm */; };
+		C37FBECC1B216C8A005C0F9D /* base.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C37FBEC61B216C8A005C0F9D /* base.ppm */; };
+		C37FBECD1B216C8A005C0F9D /* right.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C37FBEC71B216C8A005C0F9D /* right.ppm */; };
+		C37FBECE1B216C8A005C0F9D /* top.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C37FBEC81B216C8A005C0F9D /* top.ppm */; };
+		C37FBECF1B216C8A005C0F9D /* left.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C37FBEC91B216C8A005C0F9D /* left.ppm */; };
+		C37FBED01B216C8A005C0F9D /* back.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C37FBECA1B216C8A005C0F9D /* back.ppm */; };
 		C3C4480C1AD6457F004051B6 /* bear.obj in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3C448091AD6457F004051B6 /* bear.obj */; };
 		C3C4480D1AD6457F004051B6 /* dragon.obj in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3C4480A1AD6457F004051B6 /* dragon.obj */; };
 		C3C4480E1AD6457F004051B6 /* bunny.obj in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3C4480B1AD6457F004051B6 /* bunny.obj */; };
@@ -15,12 +27,6 @@
 		C3CF9A311AD454D6003E7E8D /* House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF9A301AD454D6003E7E8D /* House.cpp */; };
 		C3FB13231AFAEAF900672315 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3FB13211AFAEAF900672315 /* Skybox.cpp */; };
 		C3FB13261AFB277300672315 /* Cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3FB13241AFB277300672315 /* Cylinder.cpp */; };
-		C3FB132D1AFB343700672315 /* back.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3FB13271AFB343700672315 /* back.ppm */; };
-		C3FB132E1AFB343700672315 /* base.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3FB13281AFB343700672315 /* base.ppm */; };
-		C3FB132F1AFB343700672315 /* front.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3FB13291AFB343700672315 /* front.ppm */; };
-		C3FB13301AFB343700672315 /* left.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3FB132A1AFB343700672315 /* left.ppm */; };
-		C3FB13311AFB343700672315 /* right.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3FB132B1AFB343700672315 /* right.ppm */; };
-		C3FB13321AFB343700672315 /* top.ppm in Copy Files (3 items) (9 items) */ = {isa = PBXBuildFile; fileRef = C3FB132C1AFB343700672315 /* top.ppm */; };
 		C3FB13531AFBF93100672315 /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3FB134B1AFBF93100672315 /* Robot.cpp */; };
 		C3FB13541AFBF93100672315 /* MatrixTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3FB134C1AFBF93100672315 /* MatrixTransform.cpp */; };
 		C3FB13551AFBF93100672315 /* Geode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3FB134D1AFBF93100672315 /* Geode.cpp */; };
@@ -57,14 +63,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				C37FBECB1B216C8A005C0F9D /* front.ppm in Copy Files (3 items) (9 items) */,
+				C37FBECC1B216C8A005C0F9D /* base.ppm in Copy Files (3 items) (9 items) */,
+				C37FBECD1B216C8A005C0F9D /* right.ppm in Copy Files (3 items) (9 items) */,
+				C37FBECE1B216C8A005C0F9D /* top.ppm in Copy Files (3 items) (9 items) */,
+				C37FBECF1B216C8A005C0F9D /* left.ppm in Copy Files (3 items) (9 items) */,
+				C37FBED01B216C8A005C0F9D /* back.ppm in Copy Files (3 items) (9 items) */,
 				C3FB136E1AFC82A900672315 /* ironman.ppm in Copy Files (3 items) (9 items) */,
 				C3FB136B1AFC81D300672315 /* ironbody.ppm in Copy Files (3 items) (9 items) */,
-				C3FB132D1AFB343700672315 /* back.ppm in Copy Files (3 items) (9 items) */,
-				C3FB132E1AFB343700672315 /* base.ppm in Copy Files (3 items) (9 items) */,
-				C3FB132F1AFB343700672315 /* front.ppm in Copy Files (3 items) (9 items) */,
-				C3FB13301AFB343700672315 /* left.ppm in Copy Files (3 items) (9 items) */,
-				C3FB13311AFB343700672315 /* right.ppm in Copy Files (3 items) (9 items) */,
-				C3FB13321AFB343700672315 /* top.ppm in Copy Files (3 items) (9 items) */,
 				C3C4480C1AD6457F004051B6 /* bear.obj in Copy Files (3 items) (9 items) */,
 				C3C4480D1AD6457F004051B6 /* dragon.obj in Copy Files (3 items) (9 items) */,
 				C3C4480E1AD6457F004051B6 /* bunny.obj in Copy Files (3 items) (9 items) */,
@@ -86,6 +92,24 @@
 /* Begin PBXFileReference section */
 		C30D284A1ADDADCF0003DB34 /* Rasterizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rasterizer.cpp; sourceTree = SOURCE_ROOT; };
 		C30D284C1ADDB04F0003DB34 /* Rasterizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rasterizer.h; sourceTree = SOURCE_ROOT; };
+		C37EBF751B23B43C00AE80AB /* Obstacles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacles.cpp; sourceTree = SOURCE_ROOT; };
+		C37EBF761B23B43C00AE80AB /* Obstacles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacles.h; sourceTree = SOURCE_ROOT; };
+		C37EBF781B23D78800AE80AB /* ParticleEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEffect.cpp; sourceTree = SOURCE_ROOT; };
+		C37EBF791B23D78800AE80AB /* ParticleEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEffect.h; sourceTree = SOURCE_ROOT; };
+		C37EBF7B1B23DA2C00AE80AB /* Sphere2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere2.cpp; sourceTree = SOURCE_ROOT; };
+		C37EBF7C1B23DA2C00AE80AB /* Sphere2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sphere2.h; sourceTree = SOURCE_ROOT; };
+		C37FBEBC1B1EA1DF005C0F9D /* Buildings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buildings.cpp; sourceTree = SOURCE_ROOT; };
+		C37FBEBD1B1EA1DF005C0F9D /* Buildings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buildings.h; sourceTree = SOURCE_ROOT; };
+		C37FBEBF1B1EA91E005C0F9D /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = SOURCE_ROOT; };
+		C37FBEC01B1EA91E005C0F9D /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = SOURCE_ROOT; };
+		C37FBEC21B1EB692005C0F9D /* L_System.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = L_System.cpp; sourceTree = SOURCE_ROOT; };
+		C37FBEC31B1EB692005C0F9D /* L_System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L_System.h; sourceTree = SOURCE_ROOT; };
+		C37FBEC51B216C8A005C0F9D /* front.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = front.ppm; sourceTree = "<group>"; };
+		C37FBEC61B216C8A005C0F9D /* base.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = base.ppm; sourceTree = "<group>"; };
+		C37FBEC71B216C8A005C0F9D /* right.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = right.ppm; sourceTree = "<group>"; };
+		C37FBEC81B216C8A005C0F9D /* top.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = top.ppm; sourceTree = "<group>"; };
+		C37FBEC91B216C8A005C0F9D /* left.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = left.ppm; sourceTree = "<group>"; };
+		C37FBECA1B216C8A005C0F9D /* back.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = back.ppm; sourceTree = "<group>"; };
 		C3C448091AD6457F004051B6 /* bear.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bear.obj; sourceTree = "<group>"; };
 		C3C4480A1AD6457F004051B6 /* dragon.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = dragon.obj; sourceTree = "<group>"; };
 		C3C4480B1AD6457F004051B6 /* bunny.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
@@ -97,12 +121,6 @@
 		C3FB13221AFAEAF900672315 /* Skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skybox.h; sourceTree = SOURCE_ROOT; };
 		C3FB13241AFB277300672315 /* Cylinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cylinder.cpp; sourceTree = SOURCE_ROOT; };
 		C3FB13251AFB277300672315 /* Cylinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cylinder.h; sourceTree = SOURCE_ROOT; };
-		C3FB13271AFB343700672315 /* back.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = back.ppm; sourceTree = "<group>"; };
-		C3FB13281AFB343700672315 /* base.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = base.ppm; sourceTree = "<group>"; };
-		C3FB13291AFB343700672315 /* front.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = front.ppm; sourceTree = "<group>"; };
-		C3FB132A1AFB343700672315 /* left.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = left.ppm; sourceTree = "<group>"; };
-		C3FB132B1AFB343700672315 /* right.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = right.ppm; sourceTree = "<group>"; };
-		C3FB132C1AFB343700672315 /* top.ppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = top.ppm; sourceTree = "<group>"; };
 		C3FB134B1AFBF93100672315 /* Robot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Robot.cpp; sourceTree = SOURCE_ROOT; };
 		C3FB134C1AFBF93100672315 /* MatrixTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixTransform.cpp; sourceTree = SOURCE_ROOT; };
 		C3FB134D1AFBF93100672315 /* Geode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Geode.cpp; sourceTree = SOURCE_ROOT; };
@@ -171,14 +189,14 @@
 		D42FFC151AAFC90E006F8E9C = {
 			isa = PBXGroup;
 			children = (
+				C37FBEC51B216C8A005C0F9D /* front.ppm */,
+				C37FBEC61B216C8A005C0F9D /* base.ppm */,
+				C37FBEC71B216C8A005C0F9D /* right.ppm */,
+				C37FBEC81B216C8A005C0F9D /* top.ppm */,
+				C37FBEC91B216C8A005C0F9D /* left.ppm */,
+				C37FBECA1B216C8A005C0F9D /* back.ppm */,
 				C3FB136D1AFC82A900672315 /* ironman.ppm */,
 				C3FB13691AFC81D300672315 /* ironbody.ppm */,
-				C3FB13271AFB343700672315 /* back.ppm */,
-				C3FB13281AFB343700672315 /* base.ppm */,
-				C3FB13291AFB343700672315 /* front.ppm */,
-				C3FB132A1AFB343700672315 /* left.ppm */,
-				C3FB132B1AFB343700672315 /* right.ppm */,
-				C3FB132C1AFB343700672315 /* top.ppm */,
 				C3C448091AD6457F004051B6 /* bear.obj */,
 				C3C4480A1AD6457F004051B6 /* dragon.obj */,
 				C3C4480B1AD6457F004051B6 /* bunny.obj */,
@@ -200,6 +218,10 @@
 		D42FFC201AAFC90E006F8E9C /* CSE167 Spring 2015 Starter Code */ = {
 			isa = PBXGroup;
 			children = (
+				C37FBEBF1B1EA91E005C0F9D /* Block.cpp */,
+				C37FBEC01B1EA91E005C0F9D /* Block.h */,
+				C37FBEBC1B1EA1DF005C0F9D /* Buildings.cpp */,
+				C37FBEBD1B1EA1DF005C0F9D /* Buildings.h */,
 				D42FFC3D1AAFCF71006F8E9C /* Camera.cpp */,
 				D42FFC3F1AAFCF71006F8E9C /* Camera.h */,
 				D42FFC391AAFCF71006F8E9C /* Color.cpp */,
@@ -220,6 +242,8 @@
 				C3FB134F1AFBF93100672315 /* Group.h */,
 				C3CF9A301AD454D6003E7E8D /* House.cpp */,
 				C3CF9A321AD4552F003E7E8D /* House.h */,
+				C37FBEC21B1EB692005C0F9D /* L_System.cpp */,
+				C37FBEC31B1EB692005C0F9D /* L_System.h */,
 				D42FFC431AAFCF71006F8E9C /* Light.cpp */,
 				D42FFC451AAFCF71006F8E9C /* Light.h */,
 				C3FB135E1AFC521200672315 /* Limbs.cpp */,
@@ -255,6 +279,12 @@
 				D42FFC511AAFCF71006F8E9C /* Vector4.h */,
 				D42FFC2C1AAFCC9C006F8E9C /* Window.cpp */,
 				D42FFC301AAFCC9C006F8E9C /* Window.h */,
+				C37EBF751B23B43C00AE80AB /* Obstacles.cpp */,
+				C37EBF761B23B43C00AE80AB /* Obstacles.h */,
+				C37EBF781B23D78800AE80AB /* ParticleEffect.cpp */,
+				C37EBF791B23D78800AE80AB /* ParticleEffect.h */,
+				C37EBF7B1B23DA2C00AE80AB /* Sphere2.cpp */,
+				C37EBF7C1B23DA2C00AE80AB /* Sphere2.h */,
 			);
 			path = "CSE167 Spring 2015 Starter Code";
 			sourceTree = "<group>";
@@ -319,9 +349,12 @@
 				C3FB13571AFBF93100672315 /* Group.cpp in Sources */,
 				C3CF9A311AD454D6003E7E8D /* House.cpp in Sources */,
 				D42FFC331AAFCC9C006F8E9C /* Cube.cpp in Sources */,
+				C37EBF7A1B23D78800AE80AB /* ParticleEffect.cpp in Sources */,
 				C3CF9A2F1AD4541E003E7E8D /* OBJObject.cpp in Sources */,
+				C37FBEC11B1EA91E005C0F9D /* Block.cpp in Sources */,
 				D42FFC541AAFCF71006F8E9C /* Drawable.cpp in Sources */,
 				C3FB13531AFBF93100672315 /* Robot.cpp in Sources */,
+				C37FBEC41B1EB692005C0F9D /* L_System.cpp in Sources */,
 				D42FFC531AAFCF71006F8E9C /* Color.cpp in Sources */,
 				C30D284B1ADDADCF0003DB34 /* Rasterizer.cpp in Sources */,
 				C3FB13601AFC521200672315 /* Limbs.cpp in Sources */,
@@ -331,13 +364,16 @@
 				C3FB13231AFAEAF900672315 /* Skybox.cpp in Sources */,
 				C3FB13561AFBF93100672315 /* Node.cpp in Sources */,
 				C3FB13541AFBF93100672315 /* MatrixTransform.cpp in Sources */,
+				C37FBEBE1B1EA1DF005C0F9D /* Buildings.cpp in Sources */,
 				D42FFC321AAFCC9C006F8E9C /* Window.cpp in Sources */,
 				D42FFC5D1AAFCF71006F8E9C /* Material.cpp in Sources */,
 				D4FEE23F1AC895C6006CF92D /* MathTestBench.cpp in Sources */,
+				C37EBF7D1B23DA2C00AE80AB /* Sphere2.cpp in Sources */,
 				D42FFC5E1AAFCF71006F8E9C /* Vector4.cpp in Sources */,
 				D42FFC591AAFCF71006F8E9C /* Sphere.cpp in Sources */,
 				C3FB13551AFBF93100672315 /* Geode.cpp in Sources */,
 				D42FFC311AAFCC9C006F8E9C /* Matrix4.cpp in Sources */,
+				C37EBF771B23B43C00AE80AB /* Obstacles.cpp in Sources */,
 				C3FB13261AFB277300672315 /* Cylinder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

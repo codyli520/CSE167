@@ -12,7 +12,7 @@
 //
 void MathTestBench::runTests()
 {
-    std::cout << "CSE 167 - Math Library Test Bench" << std::endl;
+    /*std::cout << "CSE 167 - Math Library Test Bench" << std::endl;
     std::cout << std::left;
     std::cout << std::endl;
     
@@ -83,7 +83,7 @@ void MathTestBench::runTests()
     printTestsPassedLine("Test Bench Overall", (vector3Passes + vector4Passes + matrix4Passes), (vector3Tests + vector4Tests + matrix4Tests));
     std::cout << std::endl;
     
-    std::cout << "Done!" << std::endl;
+    std::cout << "Done!" << std::endl;*/
 }
 
 //Helper Functions

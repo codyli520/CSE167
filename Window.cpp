@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <stdlib.h>
+#include <vector>
 #ifdef __APPLE__
     #include <GLUT/glut.h>
 #else
@@ -14,29 +15,38 @@
 #include "Rasterizer.h"
 #include "Skybox.h"
 int modeFlag = 0;
-int Window::width  = 512;   //Set window width in pixels here
-int Window::height = 512;   //Set window height in pixels here
+int Window::width  = 1024;   //Set window width in pixels here
+int Window::height = 1024;   //Set window height in pixels here
 float SpinAngle = 0.005;
 
 Drawable* Window::shapes = &Globals::sbox;
 Robot android = Robot();
-
+ParticleEffect *pe;
+Obstacles obstacle = Obstacles();
+Buildings house = Buildings();
 Matrix4 myMatrix;
 Vector3 d,e,up;
 bool rasterization = false;
-bool forward = false;
+bool forwarding = false;
 bool sky=false;
-
+bool finished = false;
+bool reached = true;
+bool hit = false;
+float a = 1;
+float b = 50;
 float camX,camY,camZ;
-
+Vector4 plightposition;
+std::vector<int> randomInt;
 //Texture txt;
+float t=0.0;
+std::vector<ParticleEffect*> pes;
 
 void Window::initialize(void)
 {
     //Setup the light
-    Vector4 lightPos(0.0, 10.0, 15.0, 1.0);
+    Vector4 lightPos(0.0, -10.0, 15.0, 0.0);
     Globals::light.position = lightPos;
-    Globals::light.quadraticAttenuation = 0.02;
+    Globals::light.quadraticAttenuation = 0.000002;
     
     //Initialize cube matrix:
     //Globals::cube.toWorld.identity();
@@ -55,9 +65,11 @@ void Window::initialize(void)
     
     //txt = Texture();
     Globals::txt.initGL();
-    Globals::sbox = Skybox(100);
+    Globals::sbox = Skybox(200);
+   
     Globals::ironman = Cylinder(2, 1);
     Globals::cube = Cube(1);
+    Globals::block = Block(1);
     Globals::limb = Limbs(1);
     Globals::sbox.toWorld.identity();
     Globals::ironman.modelView.identity();
@@ -67,6 +79,51 @@ void Window::initialize(void)
     Globals::limb.modelView.identity();
     Globals::cube.modelView.identity();
     Globals::sphere.modelView.identity();
+    
+    
+    Globals::l_system.trees = new vector<string>();
+    for(int i = 0; i <= Globals::l_system.DEPTH; i++){
+        Globals::l_system.expand(0);
+    }
+    
+    Globals::l_system1.DEPTH = 3;
+    Globals::l_system1.trees = new vector<string>();
+    for(int i = 0; i <= Globals::l_system1.DEPTH; i++){
+        Globals::l_system1.expand1(2);
+    }
+    
+    myMatrix.makeTranslate(1, 50, 1);
+    Globals::camera.e = myMatrix*Globals::camera.e;
+    Globals::camera.update();
+   
+    myMatrix.makeRotateZ(-0.7);
+    android.robotMatrix = android.robotMatrix*myMatrix;
+    //myMatrix.makeRotateY(0.2);
+    //android.robotMatrix = android.robotMatrix*myMatrix;
+    //myMatrix.makeRotateZ(-0.5);
+    //android.robotMatrix = android.robotMatrix*myMatrix;
+    myMatrix.makeTranslate(-200, 0, 0);
+    for(int i = 0;i<12;i+=1){
+        int random = rand()%100-20;
+        randomInt.push_back(random);
+    }
+    android.robotMatrix = myMatrix*android.robotMatrix;
+    
+    plightposition = Vector4(android.robotMatrix.m[3][0],android.robotMatrix.m[3][1]-100,10.0,1.0);
+    Globals::pLight.ambientColor = 0xffffffff;
+    Globals::pLight.specularColor = 0xffff00ff;
+    Globals::pLight.diffuseColor = 0xffff00ff;
+    Globals::pLight.position = plightposition;
+    Globals::pLight.quadraticAttenuation = 0.0001;
+    Globals::pLight.constantAttenuation = 1;
+    
+    
+    
+    //pes.push_back(pe);
+    
+    myMatrix.identity();
+    //Sphere2 *sp2 = new Sphere2(2,10,10);
+    //sp2->draw(myMatrix);
 }
 
 //----------------------------------------------------------------------------
@@ -78,16 +135,26 @@ void Window::idleCallback()
     Globals::updateData.dt = 1.0/60.0;// 60 fps
     
     
-    if(!forward){
+    if(!forwarding){
         android.i -=0.05;
         if(android.i <-0.75){
-            forward = true;
+            forwarding = true;
         }
+        android.k -=0.05;
+        if(android.k <-0.75){
+            forwarding = true;
+        }
+
+        
     }
     else{
         android.i+=0.05;
         if(android.i > 0.75){
-            forward = false;
+            forwarding = false;
+        }
+        android.k+=0.05;
+        if(android.k > 0.75){
+            forwarding = false;
         }
     }
     
@@ -119,8 +186,87 @@ void Window::idleCallback()
         default:
             break;
     }
-    
+    if(!sky){
+        t+=0.005;
+        if(!finished){
+            if(android.robotMatrix.m[3][0]>=180){
+                finished = true;
+                
+            }
+            if(!reached){
+                myMatrix.makeRotateZ(-1.4);
+                android.robotMatrix = android.robotMatrix*myMatrix;
+                randomInt.clear();
+                for(int i = 0;i<12;i+=1){
+                    int random = rand()%100-20;
+                    randomInt.push_back(random);
+                }
+                reached = true;
+            }
+            myMatrix.makeTranslate(0.7, 0, 0);
+            android.robotMatrix = myMatrix*android.robotMatrix;
+        }
+        
+        else{
+            if(android.robotMatrix.m[3][0]<=-180){
+                finished = false;
+                
+            }
+            if(reached){
+                myMatrix.makeRotateZ(1.4);
+                android.robotMatrix = android.robotMatrix*myMatrix;
+                randomInt.clear();
+                for(int i = 0;i<12;i+=1){
+                    int random = rand()%100-20;
+                    randomInt.push_back(random);
+                }
+                reached = false;
+            }
 
+            myMatrix.makeTranslate(-0.7, 0, 0);
+            android.robotMatrix = myMatrix*android.robotMatrix;
+            
+        }
+        
+        myMatrix.makeTranslate(0, -5*t*5, 0);
+        android.robotMatrix=myMatrix*android.robotMatrix;
+        std::cout<<t<<std::endl;
+    }
+    
+    else if(sky && hit){
+        myMatrix.makeTranslate(0, -8, 0);
+        android.robotMatrix=myMatrix*android.robotMatrix;
+        std::cout<<t<<std::endl;
+    }
+    /*if(a>0){
+        a=a-0.1;
+        myMatrix.makeRotateX(a);
+        android.robotMatrix = android.robotMatrix*myMatrix;
+    }*/
+    int tempcounter=0;
+    for(int p=-150;p<=130;p+=40){
+        if(android.robotMatrix.m[3][0]<p+9&&android.robotMatrix.m[3][0]>p-9){
+            if(android.robotMatrix.m[3][1]<randomInt[tempcounter]-25||android.robotMatrix.m[3][1]>randomInt[tempcounter]+25){
+                sky = true;
+                hit = true;
+                if(android.robotMatrix.m[3][0]-p<=0){
+                    myMatrix.makeTranslate(-android.robotMatrix.m[3][0]+(p-9)-0.5, 0, 0);
+                    android.robotMatrix = android.robotMatrix*myMatrix;
+                }
+                else{
+                    myMatrix.makeTranslate(-android.robotMatrix.m[3][0]+(p+9)+0.5, 0, 0);
+                    android.robotMatrix = android.robotMatrix*myMatrix;
+
+                }
+                
+                ParticleEffect *pe2=new ParticleEffect(Vector3(-20,8,10));
+                pes.push_back(pe2);
+              }
+            //std::cout<<randomInt[tempcounter]<<std::endl;
+        }
+        tempcounter+=1;
+    }
+    
     //Call the display routine to draw the cube
     displayCallback();
     
@@ -145,7 +291,7 @@ void Window::reshapeCallback(int w, int h)
 // Callback method called by GLUT when window readraw is necessary or when glutPostRedisplay() was called.
 void Window::displayCallback()
 {
-    
+    Globals::camera.update();
     //glEnable(GL_BLEND);
     //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     //Clear color and depth buffers
@@ -163,13 +309,11 @@ void Window::displayCallback()
     //This will convert all world coordiantes into camera coordiantes
     glLoadMatrixf(Globals::camera.getInverseMatrix().ptr());
     
-    
-    
     //Bind the light to slot 0.  We do this after the camera matrix is loaded so that
     //the light position will be treated as world coordiantes
     //(if we didn't the light would move with the camera, why is that?)
-    
-    Globals::light.bind(0);
+    Globals::pLight.bind(1);
+  
     
     //glDisable(GL_TEXTURE_2D);
     //glDisable(GL_LIGHTING);
@@ -239,11 +383,59 @@ void Window::displayCallback()
             glDisable(GL_LIGHTING);
             Globals::sbox.draw(Globals::drawData);
             
-            for(int i = 20;i>-30;i-=5){
-                for(int j =0; j>-50;j-=5){
-                    android.draw(i,j);
+            //(int i = 20;i>-30;i-=5){
+                //for(int j =0; j>-50;j-=5){
+            
+            //std::cout<<"start"<<endl;
+            for(int i = -150;i<=150;i+=40){
+                obstacle.obstacleMatrix.makeTranslate(0, randomInt[(i+150)/40], 0);
+                //std::cout<<randomInt[(i+150)/40]<<" ";
+                obstacle.draw(i,0);
+            }
+            
+            android.draw(0,0);
+            //android.robotMatrix.print("Ironman");
+            plightposition = Vector4(android.robotMatrix.m[3][0],android.robotMatrix.m[3][1],10.0,1.0);
+            Globals::pLight.position = plightposition;
+            
+            Globals::camera.e.m[0] = android.robotMatrix.m[3][0];
+            Globals::camera.d.m[0] = android.robotMatrix.m[3][0];
+            //Globals::camera.e.m[1] = android.robotMatrix.m[3][1];
+            //Globals::camera.d.m[1] = android.robotMatrix.m[3][1];
+            //Globals::camera.e.m[1] = android.robotMatrix.m[3][2];
+            
+            Matrix4 scale;
+            scale.makeScale(10,20,20);
+            for(int i = 0; i < 3; i++){
+                for(int j = 0; j < 3; j++){
+                myMatrix.makeTranslate(-90+i*100, -200, 70-j*100);
+                myMatrix = Globals::camera.getInverseMatrix()*shapes->toWorld*myMatrix * scale;
+                //myMatrix.transpose();
+                glLoadMatrixf(myMatrix.ptr());
+                //Globals::l_system.LMatrix = myMatrix * Globals::l_system.LMatrix ;
+                Globals::l_system.draw();
                 }
             }
+            //Globals::l_system.draw();
+            scale.makeScale(10,15,20);
+            for(int i = 0; i < 9; i++){
+                for(int j = 0; j < 9; j++){
+                    myMatrix.makeTranslate(-200+i*50, -200, 200-j*50);
+                    myMatrix = Globals::camera.getInverseMatrix()*shapes->toWorld*myMatrix * scale;
+                    //myMatrix.transpose();
+                    glLoadMatrixf(myMatrix.ptr());
+                    //Globals::l_system.LMatrix = myMatrix * Globals::l_system.LMatrix ;
+                    Globals::l_system1.draw2();
+                }
+            }
+            
+                myMatrix.identity();
+            for(int i=0;i<pes.size();i++)
+                pes[i]->draw(myMatrix);
+                
+            
+           // Globals::l_system1.draw2();
+            //Globals::l_system2.draw();
             
             break;
             
@@ -253,6 +445,34 @@ void Window::displayCallback()
     //Pop off the changes we made to the matrix stack this frame
     glPopMatrix();
     
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    //I like to use glm because glu is deprecated
+    //glm::mat4 orth= glm::ortho(0.0f, (float)win_width, 0.0f, (float)win_height);
+    //glMultMatrixf(&(orth[0][0]));
+    gluOrtho2D(0.0, width, 0.0, height);
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glColor3f(1.0f, 0.0f, 0.0f);//needs to be called before RasterPos
+    glRasterPos2i(10, 10);
+    std::string s = "Some text";
+    void * font = GLUT_BITMAP_9_BY_15;
+    
+    for (std::string::iterator i = s.begin(); i != s.end(); ++i)
+    {
+        char c = *i;
+        //this does nothing, color is fixed for Bitmaps when calling glRasterPos
+        //glColor3f(1.0, 0.0, 1.0);
+        glutBitmapCharacter(font, c);
+    }
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glEnable(GL_TEXTURE_2D);
+    //glutSwapBuffers()
     //Tell OpenGL to clear any outstanding commands in its command buffer
     //This will make sure that all of our commands are fully executed before
     //we swap buffers and show the user the freshly drawn frame
@@ -285,6 +505,8 @@ void Window::processNormalKeys(unsigned char key, int x, int y) {
                 shapes->toWorld= myMatrix*shapes->toWorld;
             else
                 android.robotMatrix = myMatrix*android.robotMatrix;
+            Vector3(android.robotMatrix.m[3][0],android.robotMatrix.m[3][1],android.robotMatrix.m[3][2]).print("android pos");
+            std::cout<<randomInt[0]<<randomInt[1]<<std::endl;
             break;
         case 'y':
             myMatrix.makeTranslate(0,-1, 0);
@@ -321,6 +543,18 @@ void Window::processNormalKeys(unsigned char key, int x, int y) {
             shapes->toWorld.identity();
             android.robotMatrix.identity();
             SpinAngle = 0.005;
+            sky = false;
+            hit = false;
+            myMatrix.makeTranslate(-200, 0, 0);
+            android.robotMatrix = android.robotMatrix*myMatrix;
+            myMatrix.makeRotateZ(-0.7);
+            android.robotMatrix = android.robotMatrix*myMatrix;
+            randomInt.clear();
+            for(int i = 0;i<12;i+=1){
+                int random = rand()%100-20;
+                randomInt.push_back(random);
+            }
+            t = 0.0;
             break;
             
         case 'o':
@@ -369,7 +603,7 @@ void Window::processNormalKeys(unsigned char key, int x, int y) {
             break;
             
         case 'e':
-            rasterization = !rasterization;//rasterize mode
+            android.bound = !android.bound;
             break;
             
         case '+':
@@ -388,6 +622,7 @@ void Window::processNormalKeys(unsigned char key, int x, int y) {
         case 'p':
            
             sky = !sky;
+            
             break;
     }
     /*Vector3 pos = Vector3(Globals::cube.toWorld.m[3][0],
@@ -457,12 +692,23 @@ void Window::processSpecialKeys(int key, int x, int y) {
         case GLUT_KEY_UP:
             if(Globals::myRaster.sign < 3 && rasterization)
                 Globals::myRaster.sign++;
+            myMatrix.identity();
+            if(!hit){
+            myMatrix.makeTranslate(0, 20, 0);
+            t=0.0;
             
+            android.robotMatrix = myMatrix*android.robotMatrix;
+            }
             break;
             
         case GLUT_KEY_DOWN:
             if(Globals::myRaster.sign > 0 && rasterization)
                 Globals::myRaster.sign--;
+            if(!hit){
+            myMatrix.makeTranslate(0, -5, 0);
+            
+            android.robotMatrix = myMatrix*android.robotMatrix;
+            }
             
             break;
         
@@ -509,11 +755,12 @@ void Window::mouseMotionCallback(int x, int y){//TODO: Mouse Motion callbacks!
         mouseAngle = asinf(axisA.magnitude()/(wPoint.magnitude()*vPoint.magnitude()));
         
         myMatrix.makeRotateArbitrary(axisA, mouseAngle);
-        if(sky)
-            shapes->toWorld= myMatrix*shapes->toWorld;
-        else{
-            android.robotMatrix=myMatrix*android.robotMatrix;
-        }
+        //if(sky)
+            //shapes->toWorld= myMatrix*shapes->toWorld;
+        //else{
+            //android.robotMatrix=myMatrix*android.robotMatrix;
+            Globals::camera.e = myMatrix * Globals::camera.e;
+        //}
         
     }
     vPoint = wPoint;

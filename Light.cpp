@@ -46,6 +46,9 @@ void Light::bind(int id)
     //Configure the attenuation properties of the light
     //Constant Attenuation
     //Linear Attenuation
+    //Configure the attenuation properties of the light
+    glLightf(GL_LIGHT0 + bindID, GL_CONSTANT_ATTENUATION, constantAttenuation);//Constant Attenuation
+    glLightf(GL_LIGHT0 + bindID, GL_LINEAR_ATTENUATION, linearAttenuation);//Linear Attenuation
     glLightf(GL_LIGHT0 + bindID, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
     
     //Position the light

@@ -6,7 +6,11 @@
 #include "Skybox.h"
 #include "Geode.h"
 #include "Robot.h"
-
+#include "Buildings.h"
+#include "Obstacles.h"
+#include "ParticleEffect.h"
+#include "Sphere2.h"
+//#include "Display.h"
 class Window	  // OpenGL output window related routines
 {
     

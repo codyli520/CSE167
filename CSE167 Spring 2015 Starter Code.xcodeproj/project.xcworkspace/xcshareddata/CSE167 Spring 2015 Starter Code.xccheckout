@@ -10,31 +10,43 @@
 	<string>CSE167 Spring 2015 Starter Code</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>9BEB34C8-AE35-4EA2-92C0-A09A39A69F3B</key>
-		<string>https://github.com/rexwest/CSE167-Spring-2015-Starter-Code.git</string>
+		<key>14AEDD73D6577A22827A9C86CC7F9C9E2B48B0DC</key>
+		<string>https://github.com/codyli520/CSE167.git</string>
+		<key>DFFD9B4038E0109CC5ADCBACA852F6B570FC6EE4</key>
+		<string>https://github.com/codyli520/CSE167.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CSE167 Spring 2015 Starter Code/CSE167 Spring 2015 Starter Code.xcodeproj/project.xcworkspace</string>
+	<string>CSE167 Spring 2015 Starter Code.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>9BEB34C8-AE35-4EA2-92C0-A09A39A69F3B</key>
+		<key>14AEDD73D6577A22827A9C86CC7F9C9E2B48B0DC</key>
+		<string>../..</string>
+		<key>DFFD9B4038E0109CC5ADCBACA852F6B570FC6EE4</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/rexwest/CSE167-Spring-2015-Starter-Code.git</string>
+	<string>https://github.com/codyli520/CSE167.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>9BEB34C8-AE35-4EA2-92C0-A09A39A69F3B</string>
+	<string>14AEDD73D6577A22827A9C86CC7F9C9E2B48B0DC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>9BEB34C8-AE35-4EA2-92C0-A09A39A69F3B</string>
+			<string>DFFD9B4038E0109CC5ADCBACA852F6B570FC6EE4</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CSE167-Spring-2015-Starter-Code</string>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>14AEDD73D6577A22827A9C86CC7F9C9E2B48B0DC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CSE167</string>
 		</dict>
 	</array>
 </dict>

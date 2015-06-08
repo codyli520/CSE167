@@ -7,6 +7,7 @@
 
 Robot::Robot(){
     i =0.0;
+    k = -0.5;
     this->robotMatrix.identity();
 }
 
@@ -46,6 +47,10 @@ void Robot::draw(float x, float z){
     world->addChild(&bodyTranslate);
     bodyTranslate.addChild(&bodyScale);
     bodyScale.addChild(&Globals::cube);
+    glColor3f(1, 1, 1);
+    if(bound){
+    glutWireSphere(4, 10, 10);
+    }
     //world->draw(m3);
     
     //left arm
@@ -56,7 +61,7 @@ void Robot::draw(float x, float z){
     m1 = m1.makeTranslate(-1.75+x, 1, 0.0+z);
     m2 = m2.makeScale(0.25, 1.5, 0.25);
     m4 = m4.makeTranslate(0, -1, 0);
-    spin = spin.makeRotateX(i);
+    spin = spin.makeRotateZ(k);
     m5 = m1.multiply(spin.multiply(m4));
     
     MatrixTransform armLeftTranslate = *new MatrixTransform(m5);
@@ -74,7 +79,7 @@ void Robot::draw(float x, float z){
     m1 = m1.makeTranslate(1.75+x, 1, 0.0+z);
     m2 = m2.makeScale(0.25, 1.5, 0.25);
     m4 = m4.makeTranslate(0, -1, 0);
-    spin = spin.makeRotateX(-i);
+    spin = spin.makeRotateZ(-k);
     m5 = m1.multiply(spin.multiply(m4));
 
     MatrixTransform armRightTranslate = *new MatrixTransform(m5);

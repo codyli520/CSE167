@@ -55,6 +55,7 @@ void Cube::render(Matrix4 C)
     // front
     //front.bind();
     glBegin(GL_QUADS);
+    glNormal3f(0.0, 0.0, 1.0);
     //glColor3f(0.5, 0.5, 0.5);
     glVertex3f(size, size, -size);
     glVertex3f(-size, size, -size);
@@ -66,6 +67,7 @@ void Cube::render(Matrix4 C)
     //base
     //base.bind();
     glBegin(GL_QUADS);
+    glNormal3f(0.0, -1.0, 0.0);
     //glColor3f(0.5, 0.5, 0.5);
     glVertex3f(size, -size, size);
     glVertex3f(-size, -size, size);
@@ -77,6 +79,7 @@ void Cube::render(Matrix4 C)
     //top
     //top.bind();
     glBegin(GL_QUADS);
+    glNormal3f(0.0, 1.0, 0.0);
     //glColor3f(0.5, 0.5, 0.5);
     glVertex3f(size, size, size);
     glVertex3f(-size, size, size);
@@ -88,6 +91,7 @@ void Cube::render(Matrix4 C)
     //left
     //left.bind();
     glBegin(GL_QUADS);
+    glNormal3f(-1.0, 0.0, 0.0);
     //glColor3f(0.5, 0.5, 0.5);
     glVertex3f(-size, size, size);
     glVertex3f(-size, size, -size);
@@ -99,6 +103,7 @@ void Cube::render(Matrix4 C)
     //right
     //right.bind();
     glBegin(GL_QUADS);
+    glNormal3f(1.0, 0.0, 0.0);
     //glColor3f(0.5, 0.5, 0.5);
     glVertex3f(size, size, -size);
     glVertex3f(size, size, size);
@@ -111,7 +116,7 @@ void Cube::render(Matrix4 C)
     glColor3f(1, 1, 1);
     front.bind();
     glBegin(GL_QUADS);
-    
+    glNormal3f(0.0, 0.0, -1.0);
     glTexCoord2f(0, 0); glVertex3f(size, size, size);
     glTexCoord2f(1, 0); glVertex3f(-size, size, size);
     glTexCoord2f(1, 1); glVertex3f(-size, -size, size);

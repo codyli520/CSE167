@@ -14,7 +14,9 @@
 #include "Skybox.h"
 #include "Cylinder.h"
 #include "Limbs.h"
-
+#include "Block.h"
+#include "L_System.h"
+//#include "Display.h"
 class House;
 class Rasterizer;
 class Cube;
@@ -24,7 +26,8 @@ class Skybox;
 class Cylinder;
 class Limbs;
 class Sphere;
-
+class Block;
+class Display;
 class Globals
 {
     
@@ -33,7 +36,7 @@ public:
     static Camera camera;
     static Cube cube,head;
     static Sphere sphere;
-    static Light light;
+    static Light light,pLight,pLight2;
     static DrawData drawData;
     static UpdateData updateData;
     static House house;
@@ -43,8 +46,12 @@ public:
     static Skybox sbox;
     static Cylinder ironman;
     static Limbs limb;
+    static Block block;
+    static L_System l_system,l_system1,l_system2;
+    //static Display display;
     //Feel free to add more member variables as needed
     
 };
+
 
 #endif

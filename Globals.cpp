@@ -9,6 +9,8 @@ Cube Globals::cube = Cube();
 Limbs Globals::limb = Limbs();
 Sphere Globals::sphere = Sphere();
 Light Globals::light = Light();
+Light Globals::pLight = Light();
+Light Globals::pLight2 = Light();
 House Globals::house = House();
 
 DrawData Globals::drawData = DrawData();
@@ -28,3 +30,10 @@ Texture Globals::txt = Texture();
 Skybox Globals::sbox = Skybox();
 Cylinder Globals::ironman = Cylinder();
 Rasterizer Globals::myRaster = Rasterizer();
+Block Globals::block = Block();
+float trees[50];
+
+L_System Globals::l_system = *new L_System();
+L_System Globals::l_system1 = *new L_System();
+L_System Globals::l_system2 = *new L_System();
+

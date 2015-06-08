@@ -5,7 +5,8 @@
 
 class Robot{
 public:
-    float i;
+    float i,k;
+    bool bound = false;
     Matrix4 robotMatrix;
     MatrixTransform *robot;
     

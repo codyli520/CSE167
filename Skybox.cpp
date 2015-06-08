@@ -67,6 +67,7 @@ void Skybox::draw(DrawData& drawdata)
     //base
     base.bind();
     glBegin(GL_QUADS);
+    
     glTexCoord2f(1, 1); glVertex3f(size, -size, size);
     glTexCoord2f(0, 1); glVertex3f(-size, -size, size);
     glTexCoord2f(0, 0); glVertex3f(-size, -size, -size);
