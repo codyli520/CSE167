@@ -104,7 +104,7 @@ void Window::initialize(void)
     //android.robotMatrix = android.robotMatrix*myMatrix;
     myMatrix.makeTranslate(-200, 0, 0);
     for(int i = 0;i<12;i+=1){
-        int random = rand()%100-20;
+        int random = rand()%100-50;
         randomInt.push_back(random);
     }
     android.robotMatrix = myMatrix*android.robotMatrix;
@@ -198,7 +198,7 @@ void Window::idleCallback()
                 android.robotMatrix = android.robotMatrix*myMatrix;
                 randomInt.clear();
                 for(int i = 0;i<12;i+=1){
-                    int random = rand()%100-20;
+                    int random = rand()%100-50;
                     randomInt.push_back(random);
                 }
                 reached = true;
@@ -217,12 +217,12 @@ void Window::idleCallback()
                 android.robotMatrix = android.robotMatrix*myMatrix;
                 randomInt.clear();
                 for(int i = 0;i<12;i+=1){
-                    int random = rand()%100-20;
+                    int random = rand()%100-50;
                     randomInt.push_back(random);
                 }
                 reached = false;
             }
-
+            
             myMatrix.makeTranslate(-0.7, 0, 0);
             android.robotMatrix = myMatrix*android.robotMatrix;
             
@@ -259,7 +259,7 @@ void Window::idleCallback()
 
                 }
                 
-                ParticleEffect *pe2=new ParticleEffect(Vector3(-20,8,10));
+                ParticleEffect *pe2=new ParticleEffect(Vector3(-20,5,10));
                 pes.push_back(pe2);
               }
             //std::cout<<randomInt[tempcounter]<<std::endl;
@@ -455,16 +455,16 @@ void Window::displayCallback()
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
-    glColor3f(1.0f, 0.0f, 0.0f);//needs to be called before RasterPos
+    //needs to be called before RasterPos
     glRasterPos2i(10, 10);
-    std::string s = "Some text";
+    std::string s = "Press 'r' to restart";
     void * font = GLUT_BITMAP_9_BY_15;
     
     for (std::string::iterator i = s.begin(); i != s.end(); ++i)
     {
         char c = *i;
         //this does nothing, color is fixed for Bitmaps when calling glRasterPos
-        //glColor3f(1.0, 0.0, 1.0);
+        glColor3f(1.0, 0.0, 1.0);
         glutBitmapCharacter(font, c);
     }
     glMatrixMode(GL_MODELVIEW);
@@ -547,11 +547,18 @@ void Window::processNormalKeys(unsigned char key, int x, int y) {
             hit = false;
             myMatrix.makeTranslate(-200, 0, 0);
             android.robotMatrix = android.robotMatrix*myMatrix;
-            myMatrix.makeRotateZ(-0.7);
-            android.robotMatrix = android.robotMatrix*myMatrix;
+            if(!finished){
+                myMatrix.makeRotateZ(-0.7);
+                android.robotMatrix = android.robotMatrix*myMatrix;
+            }
+            else{
+                myMatrix.makeRotateZ(0.7);
+                android.robotMatrix = android.robotMatrix*myMatrix;
+                
+            }
             randomInt.clear();
             for(int i = 0;i<12;i+=1){
-                int random = rand()%100-20;
+                int random = rand()%100-50;
                 randomInt.push_back(random);
             }
             t = 0.0;
